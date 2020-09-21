@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Flex Panels 💪</title>
   <link href='https://fonts.googleapis.com/css?family=Amatic+SC' rel='stylesheet' type='text/css'>
+  <script src="index.js"></script>
 </head>
 <body>
   <style>
@@ -26,6 +27,7 @@
     .panels {
       min-height: 100vh;
       overflow: hidden;
+      display: flex;
     }
 
     .panel {
@@ -43,6 +45,11 @@
       font-size: 20px;
       background-size: cover;
       background-position: center;
+      flex: 1;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
     }
 
     .panel1 { background-image:url(https://source.unsplash.com/gYl-UtwNg_I/1500x1500); }
@@ -51,11 +58,31 @@
     .panel4 { background-image:url(https://source.unsplash.com/ITjiVXcwVng/1500x1500); }
     .panel5 { background-image:url(https://source.unsplash.com/3MNzGlQM7qs/1500x1500); }
 
-    /* Flex Children */
+    /* Flex Items */
     .panel > * {
       margin: 0;
       width: 100%;
       transition: transform 0.5s;
+      flex: 1 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .panel > *:first-child { 
+      transform: translateY(-100%);
+    }
+
+    .panel.open-active > *:first-child { 
+      transform: translateY(0);
+    }
+
+    .panel > *:last-child { 
+      transform: translateY(100%);
+    }
+
+    .panel.open-active > *:last-child { 
+      transform: translateY(0);
     }
 
     .panel p {
@@ -71,6 +98,7 @@
 
     .panel.open {
       font-size: 40px;
+      flex: 5;
     }
 
   </style>
@@ -103,12 +131,5 @@
       <p>Motion</p>
     </div>
   </div>
-
-  <script>
-
-  </script>
-
-
-
 </body>
 </html>
